@@ -8,7 +8,7 @@ import requests
 import pandas
 
 uri = 'https://data.cdc.gov/resource/muzy-jte6.json'
-state = 'Illinois'
+state = 'Georgia'
 output = 'death_weekly_by_state.json'
 
 
