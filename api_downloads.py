@@ -22,7 +22,7 @@ def api_death_weekly_by_state(state: str, year: int, week: int, uri=uri):
 
 
 
-def api_death_compare(state: str, year1: int, year2: int):
+def _api_death_compare(state: str, year1: int, year2: int):
     totals = {
         'year1': 0,
         'year2': 0,
@@ -39,11 +39,11 @@ def api_death_compare(state: str, year1: int, year2: int):
             totals['year1'] += int(data1[0]['all_cause'])
             totals['year2'] += int(data2[0]['all_cause'])
             #total_difference += difference
-            print(
-                data1[0]['week_ending_date'], ':', data1[0]['all_cause'], '=>', data2[0]['week_ending_date'] + ': ' + data2[0]['all_cause'], 
-                '| TOTALS - year1:', totals['year1'], '- year2:', totals['year2'],
-                '| Diff:', totals['difference']
-            ) 
+            # print(
+            #     data1[0]['week_ending_date'], ':', data1[0]['all_cause'], '=>', data2[0]['week_ending_date'] + ': ' + data2[0]['all_cause'], 
+            #     '| TOTALS - year1:', totals['year1'], '- year2:', totals['year2'],
+            #     '| Diff:', totals['difference']
+            # ) 
     except IndexError:
         print(f'{i -1} is last week reported.')
         total_diff = totals['total_diff']
@@ -61,4 +61,4 @@ def json_to_csv(json_input: str):
     df = pandas.read_json(json_input)
     df.to_csv('death_weekly_by_state.csv')
 
-api_death_compare('Illinois', 2019, 2020)
+_api_death_compare('Illinois', 2019, 2020)
